@@ -18,7 +18,7 @@
 
                     @yield('ticketit_header')
                 </h5>
-                <div class="card-body @yield('ticketit_content_parent_class')">
+                <div class="card-body">
                     @yield('ticketit_content')
                 </div>
             </div>
