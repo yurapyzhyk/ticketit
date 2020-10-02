@@ -1,5 +1,5 @@
 {
-    "name": "kordy/ticketit",
+    "name": "yurapyzhyk/ticketit",
     "description": "A simple helpdesk tickets system for Laravel 5.1 – 5.8 and 6.* - 7.* - 8.* which integrates smoothly with Laravel default users and auth system",
     "type": "laravel-package",
     "keywords": ["laravel","helpdesk", "ticket", "support"],
@@ -15,6 +15,10 @@
     },
     "license": "MIT",
     "authors": [
+        {
+            "name": "Yurii Pyzhyk",
+            "email": "yurapyzhyk@gmail.com"
+        },
         {
             "name": "Ahmed Kordy",
             "email": "ahmed@kordy.info"
