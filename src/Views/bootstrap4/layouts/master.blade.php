@@ -2,8 +2,6 @@
 
 @section('content')
     @include('ticketit::shared.header')
-
-    <div class="container">
         <div class="card mb-3">
             <div class="card-body">
                 @include('ticketit::shared.nav')
@@ -26,5 +24,4 @@
             </div>
         @endif
         @yield('ticketit_extra_content')
-    </div>
 @stop
