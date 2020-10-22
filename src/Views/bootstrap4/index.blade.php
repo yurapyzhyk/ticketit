@@ -55,7 +55,7 @@
 	            { data: 'status', name: 'ticketit_statuses.name' },
 	            { data: 'updated_at', name: 'ticketit.updated_at' },
 				@if( $u->isAgent() || $u->isAdmin() )
-					{ data: 'last_message_from', name: 'last_message_from' }
+					{ data: 'last_message_from', name: 'last_message_from' },
 				@endif
             	{ data: 'agent', name: 'users.name' },
 	            @if( $u->isAgent() || $u->isAdmin() )
