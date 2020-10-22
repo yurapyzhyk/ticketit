@@ -40,21 +40,21 @@ class TicketsController extends Controller
 
         if ($user->isAdmin()) {
             if ($complete) {
-                $collection = Ticket::complete();
+                $collection = Ticket::complete()->with('comments');
             } else {
-                $collection = Ticket::active();
+                $collection = Ticket::active()->with('comments');
             }
         } elseif ($user->isAgent()) {
             if ($complete) {
-                $collection = Ticket::complete()->agentUserTickets($user->id);
+                $collection = Ticket::complete()->agentUserTickets($user->id)->with('comments');
             } else {
-                $collection = Ticket::active()->agentUserTickets($user->id);
+                $collection = Ticket::active()->agentUserTickets($user->id)->with('comments');
             }
         } else {
             if ($complete) {
-                $collection = Ticket::userTickets($user->id)->complete();
+                $collection = Ticket::userTickets($user->id)->complete()->with('comments');
             } else {
-                $collection = Ticket::userTickets($user->id)->active();
+                $collection = Ticket::userTickets($user->id)->active()->with('comments');
             }
         }
 
@@ -82,7 +82,7 @@ class TicketsController extends Controller
 
         $this->renderTicketTable($collection);
 
-        $collection->editColumn('updated_at', '{!! \Carbon\Carbon::parse($updated_at)->diffForHumans() !!}');
+        //$collection->editColumn('updated_at', '{!! \Carbon\Carbon::parse($updated_at)->diffForHumans() !!}');
 
         // method rawColumns was introduced in laravel-datatables 7, which is only compatible with >L5.4
         // in previous laravel-datatables versions escaping columns wasn't defaut
@@ -128,6 +128,14 @@ class TicketsController extends Controller
             $ticket = $this->tickets->find($ticket->id);
 
             return e($ticket->agent->name);
+        });
+
+        $collection->addColumn('last_message_from', function ($ticket) {
+            $ticket = $this->tickets->find($ticket->id);
+
+            $lastComment = $ticket->comments->last();
+
+            return e($lastComment->user->name);
         });
 
         return $collection;
