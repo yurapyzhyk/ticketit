@@ -54,12 +54,14 @@
 	            { data: 'subject', name: 'subject' },
 	            { data: 'status', name: 'ticketit_statuses.name' },
 	            { data: 'updated_at', name: 'ticketit.updated_at' },
+				@if( $u->isAgent() || $u->isAdmin() )
+					{ data: 'last_message_from', name: 'last_message_from' }
+				@endif
             	{ data: 'agent', name: 'users.name' },
 	            @if( $u->isAgent() || $u->isAdmin() )
 		            { data: 'priority', name: 'ticketit_priorities.name' },
 	            	{ data: 'owner', name: 'users.name' },
-		            { data: 'category', name: 'ticketit_categories.name' },
-		            { data: 'last_message_from', name: 'last_message_from' }
+		            { data: 'category', name: 'ticketit_categories.name' }
 	            @endif
 	        ]
 	    });

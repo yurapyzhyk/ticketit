@@ -135,7 +135,7 @@ class TicketsController extends Controller
 
             $lastComment = $ticket->comments->last();
 
-            return e($lastComment->user->name);
+            return $lastComment ? e($lastComment->user->name) : '';
         });
 
         return $collection;
