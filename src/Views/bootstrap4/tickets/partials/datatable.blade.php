@@ -5,13 +5,15 @@
             <td>{{ trans('ticketit::lang.table-subject') }}</td>
             <td>{{ trans('ticketit::lang.table-status') }}</td>
             <td>{{ trans('ticketit::lang.table-last-updated') }}</td>
+            @if( $u->isAgent() || $u->isAdmin() )
+                <td>Last Update From</td>
+            @endif
             <td>{{ trans('ticketit::lang.table-agent') }}</td>
-          @if( $u->isAgent() || $u->isAdmin() )
-            <td>{{ trans('ticketit::lang.table-priority') }}</td>
-            <td>{{ trans('ticketit::lang.table-owner') }}</td>
-            <td>{{ trans('ticketit::lang.table-category') }}</td>
-            <td>Last Update From</td>
-          @endif
+            @if( $u->isAgent() || $u->isAdmin() )
+                <td>{{ trans('ticketit::lang.table-priority') }}</td>
+                <td>{{ trans('ticketit::lang.table-owner') }}</td>
+                <td>{{ trans('ticketit::lang.table-category') }}</td>
+            @endif
         </tr>
     </thead>
 </table>
